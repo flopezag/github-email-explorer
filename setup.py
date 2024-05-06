@@ -13,9 +13,9 @@ setup(
     version=metadata['version'],
 
     # Author details
-    author='yuecen',
-    author_email='yuecendev+pypi@gmail.com',
-    url='https://github.com/yuecen/github-email-explorer',
+    author='flopezag',
+    author_email='flopezagdev+pypi@gmail.com',
+    url='https://github.com/flopezag/github-email-explorer',
     long_description=description,
     license='MIT',
     classifiers=[

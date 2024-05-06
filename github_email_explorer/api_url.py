@@ -1,6 +1,5 @@
 # -*- coding: utf-8 -*-
-from urllib import urlencode
-from urlparse import parse_qs, urlsplit, urlunsplit
+from urllib.parse import urlencode, parse_qs, urlsplit, urlunsplit
 
 
 class GitHubEndPoint(object):
@@ -31,16 +30,24 @@ class GitHubEndPoint(object):
         return '{}repos/{}/{}/subscribers'.format(GitHubEndPoint.api_url, user_id, repo)
 
     @staticmethod
+    def contributors(user_id, repo):
+        return '{}repos/{}/{}/contributors'.format(GitHubEndPoint.api_url, user_id, repo)
+
+    @staticmethod
     def rate_limit():
         return '{}rate_limit'.format(GitHubEndPoint.api_url)
 
     @staticmethod
-    def add_auth_info(url, github_api_auth):
+    def add_auth_info(github_api_auth) -> dict:
         if github_api_auth is None:
-            github_api_auth = ('', '')
-        url = set_url_parameter(url, 'client_id', github_api_auth[0])
-        url = set_url_parameter(url, 'client_secret', github_api_auth[1])
-        return url
+            headers_dict = dict()
+        else:
+            headers_dict = {
+                "Authorization": f"Bearer {github_api_auth}",
+                "X-GitHub-Api-Version": "2022-11-28"
+            }
+
+        return headers_dict
 
     @staticmethod
     def pagination(url, page=1, per_page=100):

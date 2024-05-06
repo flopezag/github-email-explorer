@@ -1,8 +1,8 @@
 subject: Thanks for trying {{repository}}
 from: test@example.com
 user:
-repository: yuecen/github-email-explorer
-repository_owner: yuecen
+repository: flopezag/github-email-explorer
+repository_owner: flopezag
 repository_name: github-email-explorer
 site: GitHub
 
@@ -12,4 +12,4 @@ site: GitHub
 <p>...</p>
 
 <p>I look forward to seeing you on GitHub :)</p>
-<p>yuecen</p>
+<p>flopezag</p>

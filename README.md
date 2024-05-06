@@ -1,7 +1,6 @@
 ## github-email-explorer
 
-[![Build Status](https://travis-ci.org/yuecen/github-email-explorer.svg?branch=master)](https://travis-ci.org/yuecen/github-email-explorer)
-[![Code Climate](https://codeclimate.com/github/yuecen/github-email-explorer/badges/gpa.svg)](https://codeclimate.com/github/yuecen/github-email-explorer)
+<!--[![Code Climate](https://codeclimate.com/github/flopezag/github-email-explorer/badges/gpa.svg)](https://codeclimate.com/github/flopezag/github-email-explorer) -->
 
 For people who want to create an email marketing plan for particular group on 
 GitHub, github-email-explorer can collect addresses from a repository you want, 
@@ -25,7 +24,7 @@ SendGrid is only one email provider at current progress.
 #### A. Using Command
 
 ```bash
-$ ge-explore --repo yuecen/github-email-explorer --action_type star fork watch
+$ ge-explore --repo flopezag/github-email-explorer --action_type star fork watch
  
 John (john2) <John@example.org>; Peter James (pjames) <James@example.org>;
 ```
@@ -43,14 +42,14 @@ with the command above. Get *Client ID* and *Client Secret* by [OAuth applicatio
 ```python
 from github_email_explorer import github_email
 
-ges = github_email.collect_email_info('yuecen', 'github-email-explorer', ['star', 'watch'])
+ges = github_email.collect_email_info('flopezag', 'github-email-explorer', ['star', 'watch'])
 
 for ge in ges:
-    print ge.g_id, "->", ge.name, ",", ge.email
+    print(f'{ge.g_id} -> {ge.name}, {ge.email}')
 
 # With Authentication
 # github_api_auth = ('<your_client_id>', '<your_client_secret>')
-# ges = github_email.collect_email_info('yuecen', 'github-email-explorer', ['star', 'watch'],
+# ges = github_email.collect_email_info('flopezag', 'github-email-explorer', ['star', 'watch'],
 #                                        github_api_auth=github_api_auth)
 ```
 
@@ -76,8 +75,8 @@ Here is an example to use following syntax, the file saved to ```examples/market
 subject: Thanks for using {{repository}}
 from: test@example.com
 user:
-repository: yuecen/github-email-explorer
-repository_owner: yuecen
+repository: flopezag/github-email-explorer
+repository_owner: flopezag
 repository_name: github-email-explorer
 site: GitHub
 
@@ -87,18 +86,18 @@ site: GitHub
 <p>...</p>
 
 <p>I look forward to seeing you on GitHub :)</p>
-<p>yuecen</p>
+<p>flopezag</p>
 ```
 
-| Metadata Field  | Description   |
-| --------------- |:------------- |
-| subject         | email subject |
-| from            | sender address|
-| from_name       | sender name   |
-| user            | you can put an email list with a well format for parse user's ```name``` and ```g_id```. For example, ```John (john2) <John@example.org>; Peter James (pjames) <James@example.org>```. If you don't put an email list, the repository field will be used for running ge-explore to get email list. |
-| repository      | full repository name on GitHub|
-| repository_owner| repository owner |
-| repository_name | repository name  |
+| Metadata Field   | Description                                                                                                                                                                                                                                                                                        |
+|------------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| subject          | email subject                                                                                                                                                                                                                                                                                      |
+| from             | sender address                                                                                                                                                                                                                                                                                     |
+| from_name        | sender name                                                                                                                                                                                                                                                                                        |
+| user             | you can put an email list with a well format for parse user's ```name``` and ```g_id```. For example, ```John (john2) <John@example.org>; Peter James (pjames) <James@example.org>```. If you don't put an email list, the repository field will be used for running ge-explore to get email list. |
+| repository       | full repository name on GitHub                                                                                                                                                                                                                                                                     |
+| repository_owner | repository owner                                                                                                                                                                                                                                                                                   |
+| repository_name  | repository name                                                                                                                                                                                                                                                                                    |
 
 ```site``` is not a essential field, it will be in SendGrid custom_args field for log
 
@@ -114,9 +113,11 @@ ge-sendgrid --api_key <your_sendgrid_api_key>
             --template_path <github-email-explorer_folder_path>/examples/marketing_email.txt
 ```
 
-The following image is an real example of email format for ge-sendgrid command.
+<!--
+The following image is a real example of email format for ge-sendgrid command.
 
 > <img src="examples/marketing_email.png" width="300">
+-->
 
 ### More...
 
